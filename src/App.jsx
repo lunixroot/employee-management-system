@@ -24,9 +24,9 @@ useEffect(() => {
 
   // useEffect(() => {
   //   if(authData){
-  //     const loggedInUsr = localStorage.getItem('loggedInUser')
-  //     if(loggedInUsr){
-  //       setUser(loggedInUsr.role)
+  //     const loggedInUser = localStorage.getItem('loggedInUser')
+  //     if(loggedInUser){
+  //       setUser(loggedInUser.role)
   //     }
   //   }
   // }, [authData])
