@@ -9,10 +9,10 @@ const FailedTask = ({data}) => {
         </div>
         <div>
           <h2 className="mt-5 text-2xl font-semibold">
-            {Data.title}
+            {data.title}
           </h2>
           <p className="mt-2 text-sm">
-            {Data.discription}
+            {data.description}
           </p>
           <div className='flex justify-between gap-2 mt-5'>
             <button className='bg-red-400 py-1 px-2 text-sm'>Failed</button>
