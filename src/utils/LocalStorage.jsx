@@ -4,7 +4,7 @@ import React from 'react'
 const employees =  [
   {
     "id": 1,
-    "name": "John Doe",
+    "name": "John",
     "email": "john@ex.com",
     "password": "123",
     "task_count": 2,
@@ -39,7 +39,7 @@ const employees =  [
   },
   {
     "id": 2,
-    "name": "Jane Smith",
+    "name": "Jane",
     "email": "janesmith@example.com",
     "password": "123",
     "task_count": 2,
@@ -51,7 +51,7 @@ const employees =  [
     },
     "tasks": [
       {
-        "title": "Penetration Testing",
+        "title": "Penetration",
         "description": "Perform security penetration testing on web applications.",
         "date": "2025-03-22",
         "category": "Testing",
@@ -74,7 +74,7 @@ const employees =  [
   },
   {
     "id": 3,
-    "name": "Alex Johnson",
+    "name": "Alex",
     "email": "alexjohnson@example.com",
     "password": "123",
     "task_count": 2,
@@ -109,7 +109,7 @@ const employees =  [
   },
   {
     "id": 4,
-    "name": "Emily White",
+    "name": "Emily",
     "email": "emilywhite@example.com",
     "password": "123",
     "task_count": 2,
@@ -144,7 +144,7 @@ const employees =  [
   },
   {
     "id": 5,
-    "name": "Michael Brown",
+    "name": "Michael",
     "email": "michaelbrown@example.com",
     "password": "123",
     "task_count": 2,

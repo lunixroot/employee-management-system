@@ -9,6 +9,8 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [loggedUserData, setloggedUserData] = useState(null);
   const authData = useContext(authContext);
+  const [userData, setuserData] = useContext(authContext)
+  
   useEffect(() => {
     setLocalStorage();
   });
@@ -22,8 +24,8 @@ const App = () => {
   }, []);
 
   const newLocal = (email, password) => {
-    if (authData) {
-      const admin = authData.admin?.find(
+    if (userData) {
+      const admin = userData.admin?.find(
         (a) => a.email === email && a.password === password
       );
       if (admin) {
@@ -35,7 +37,7 @@ const App = () => {
         );
         return;
       }
-      const employee = authData.employees?.find(
+      const employee = userData.employees?.find(
         (e) => e.email === email && e.password === password
       );
       if (employee) {
@@ -60,8 +62,16 @@ const App = () => {
     <>
       {!user ? <Login handelLogin={handelLogin} /> : ""}
 
-      {user == "admin" ? <Admindashbord changeUser={setUser} data={loggedUserData} /> : ""}
-      {user == "employee" ? <Employeedashbord changeUser={setUser} data={loggedUserData} /> : ""}
+      {user == "admin" ? (
+        <Admindashbord changeUser={setUser} data={loggedUserData} />
+      ) : (
+        ""
+      )}
+      {user == "employee" ? (
+        <Employeedashbord changeUser={setUser} data={loggedUserData} />
+      ) : (
+        ""
+      )}
     </>
   );
 };

@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { authContext } from '../context/Authcontext'
 
 const CreateTask = () => {
+const [userData, setuserData] = useContext(authContext)
 
   const [taskTitle, settaskTitle] = useState('')
   const [taskDescription, settaskDescription] = useState('')
@@ -11,14 +13,45 @@ const CreateTask = () => {
 
   const submeitHandler = (e)=>{
     e.preventDefault()
-    settask({taskTitle, taskDate, taskDescription, category, newTask:true, active:false, completed:false, failed:false})
-    const data = JSON.parse(localStorage.getItem('employees'))
-    data.forEach(e=> {
-      if(asignTo == e.name){
-        e.tasks.push(task)
+
+    const newTask = {
+      taskTitle,
+      taskDate,
+      taskDescription,
+      category,
+      newTask: true,
+      active: false,
+      completed: false,
+      failed: false,
+    };
+
+    // settask({taskTitle, taskDate, taskDescription, category, newTask:true, active:false, completed:false, failed:false})
+
+    const updateEmployees = userData.employees.map((e)=>{
+      if(e.name === asignTo){
+        return{
+          ...e,
+          tasks: [...e.tasks, newTask], // Add new task
+          task_summary: {...e.task_summary, new_task: e.task_summary.new_task + 1, active: e.task_summary.active + 1},
+        }
       }
+      return e;
     });
-    localStorage.setItem('employees', JSON.stringify(data))
+
+    setuserData((prev) => ({
+      ...prev,
+      employees: updateEmployees,
+    }));
+
+    // data.forEach(e=> {
+    //   if(asignTo == e.name){
+    //     e.tasks.push(task)
+    //     console.log(e)
+    //     e.task_summary.new_task = e.task_summary.new_task+1
+    //   }
+    // });
+
+    localStorage.setItem('employees', JSON.stringify(updateEmployees))
 
     setasignTo('')
     setcategory('')
